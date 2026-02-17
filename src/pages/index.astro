@@ -73,20 +73,13 @@ posts.sort(
 						posts.map((entry, index) => (
 							<a
 								href={entry.link}
-								class="p-2 border border-black/50 dark:border-white/50 rounded-lg post-item"
-								style={`animation-delay: ${index * 0.2}s;`}
+								class="p-2 border border-black/50 dark:border-white/50 rounded-lg"
 							>
 								<div class="flex flex-col mb-1">
-									<h2
-										class="font-semibold text-lg"
-										transition:name={`post-title-${entry.filename}`}
-									>
+									<h2 class="font-semibold text-lg">
 										{entry.title}
 									</h2>
-									<div
-										class="flex items-center gap-4 mt-1 text-sm w-full min-w-0"
-										transition:name={`post-meta-${entry.filename}`}
-									>
+									<div class="flex items-center gap-4 mt-1 text-sm w-full min-w-0">
 										<div class="flex items-center gap-4 text-gray-500 dark:text-gray-400 flex-shrink-0">
 											<span class="whitespace-nowrap">
 												{new Date(
@@ -126,112 +119,9 @@ posts.sort(
 			</div>
 		</div>
 	</section>
-
-	<div
-		class="border-t border-t-black/50 dark:border-t-white/50 px-4 lg:px-30 py-8 w-full flex flex-col lg:flex-row gap-8 lg:gap-40"
-	>
-		<div class="flex flex-col w-full gap-2">
-			<h2 class="text-green-600 font-bold text-2xl lg:text-3xl">
-				Who am I?
-			</h2>
-
-			<p class="text-lg">
-				My name is David - I'm a Computer Engineering student at <a
-					class="underline"
-					href="https://www.calpoly.edu/">Cal Poly, SLO</a
-				>. I've been pursuing Software Development for the better part
-				of 6 years as part of my passion.
-			</p>
-
-			<p class="text-lg">I'm bilingual, English and Spanish.</p>
-
-			<p class="text-lg">
-				You'll often find me creating and managing open source projects
-				on <a href="https://github.com/" class="underline text-nowrap">
-					<Icon name="mdi:github" size="24" class="inline" /> Github
-				</a>.
-			</p>
-
-			<p class="text-lg">
-				You can contact me at <a
-					href="mailto:david@codebycruz.com"
-					class="underline"
-				>
-					david@codebycruz.com
-				</a>. Note this is simply a forwarding address and I may reply
-				from another email.
-			</p>
-		</div>
-
-		<section class="flex flex-col w-full gap-2">
-			<h2 class="text-green-600 font-bold text-2xl lg:text-3xl">
-				What do I do?
-			</h2>
-
-			<p class="text-lg">
-				I build projects like full-stack, deployable applications with
-				the best tools for the job.
-			</p>
-
-			<p class="text-lg">
-				My preferred tools are <a
-					href="https://www.typescriptlang.org/"
-					class="underline"
-				>
-					<Icon
-						name="mdi:language-typescript"
-						size="24"
-						class="inline"
-					/> TypeScript
-				</a> for web development, <a
-					href="https://www.docker.com/"
-					class="underline"
-				>
-					<Icon name="mdi:docker" size="24" class="inline" /> Docker
-				</a>, using <a
-					href="https://docs.docker.com/compose/"
-					class="underline"
-				>
-					Compose
-				</a> and <a
-					href="https://docs.docker.com/engine/swarm/"
-					class="underline"
-				>
-					Swarm
-				</a> for containerization, <a
-					href="https://www.rust-lang.org/"
-					class="underline"
-				>
-					<Icon name="mdi:language-rust" size="24" class="inline" /> Rust
-				</a>, for native applications, and occasionally <a
-					href="https://en.wikipedia.org/wiki/C_(programming_language)"
-					class="underline"
-				>
-					C
-				</a> for simple programs.
-			</p>
-
-			<p class="text-lg">
-				I've been contracted for a few projects, please do reach out if
-				you are interested in that. Otherwise, I'm open to providing any
-				guidance or pointers.
-			</p>
-		</section>
-	</div>
 </Layout>
 
 <style>
-	@keyframes dropDown {
-		from {
-			opacity: 0;
-			transform: translateY(-30px);
-		}
-		to {
-			opacity: 1;
-			transform: translateY(0);
-		}
-	}
-
 	.post-list {
 		mask-image: linear-gradient(
 			to bottom,
@@ -241,10 +131,6 @@ posts.sort(
 			transparent 100%
 		);
 		scrollbar-width: none;
-	}
-
-	.post-item {
-		animation: dropDown 0.6s ease-out both;
 	}
 
 	.small-tag :global(span) {

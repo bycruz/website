@@ -6,51 +6,51 @@ import { email } from "../data/info";
 import { rss } from "../data/info";
 
 type LinkInfo = { to: string; label: string } & (
-    | { text: string }
-    | { icon: string }
+	| { text: string }
+	| { icon: string }
 );
 
 const links = [
-    { to: x, text: "𝕏", label: "𝕏" },
-    {
-        to: linkedin,
-        icon: "mdi:linkedin",
-        label: "LinkedIn",
-    },
-    {
-        to: github,
-        icon: "mdi:github",
-        label: "Github",
-    },
-    {
-        to: `mailto:${email}`,
-        icon: "mdi:email",
-        label: "Mail",
-    },
-    {
-        to: rss,
-        icon: "mdi:rss",
-        label: "RSS Feed",
-    },
+	{ to: x, text: "𝕏", label: "𝕏" },
+	{
+		to: linkedin,
+		icon: "mdi:linkedin",
+		label: "LinkedIn",
+	},
+	{
+		to: github,
+		icon: "mdi:github",
+		label: "Github",
+	},
+	{
+		to: `mailto:${email}`,
+		icon: "mdi:email",
+		label: "Mail",
+	},
+	{
+		to: rss,
+		icon: "mdi:rss",
+		label: "RSS Feed",
+	},
 ] as LinkInfo[];
 ---
 
-<footer class="px-4 py-8 bg-green-600 w-full">
-    <div class="flex flex-row gap-2 items-center justify-center">
-        {
-            links.map((link) => (
-                <a
-                    class="text-3xl p-6 text-black/60 transition duration-300 hover:text-white"
-                    href={link.to}
-                    aria-label={link.label}
-                >
-                    {"icon" in link ? (
-                        <Icon name={link.icon} size="32" />
-                    ) : (
-                        link.text
-                    )}
-                </a>
-            ))
-        }
-    </div>
+<footer class="px-4 py-6 border-t border-black/10 dark:border-white/10 w-full">
+	<div class="flex flex-row gap-1 items-center justify-center">
+		{
+			links.map((link) => (
+				<a
+					class="text-2xl p-4 text-black/50 dark:text-white/50 transition-colors duration-200 hover:text-black dark:hover:text-white"
+					href={link.to}
+					aria-label={link.label}
+				>
+					{"icon" in link ? (
+						<Icon name={link.icon} size="32" />
+					) : (
+						link.text
+					)}
+				</a>
+			))
+		}
+	</div>
 </footer>

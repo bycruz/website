@@ -1,144 +1,137 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { Icon } from "astro-icon/components";
-import { email, linkedin, x } from "../data/info";
+import { email, linkedin, x, github } from "../data/info";
 ---
 
 <Layout>
-    <div class="max-w-6xl mx-auto px-4 py-8">
-        <h1 class="text-center font-bold text-4xl mb-8">About</h1>
+	<div class="py-12 pb-20 w-full max-w-2xl mx-auto">
+		<h1 class="text-3xl font-bold mb-2">About</h1>
+		<p class="text-gray-600 dark:text-gray-400 mb-10">
+			A bit more about who I am.
+		</p>
 
-        <div class="grid md:grid-cols-2 gap-12 items-start">
-            <div class="space-y-2">
-                <h2 class="text-green-600 font-bold text-2xl">
-                    <span class="waving-hand">👋</span> I'm David
-                </h2>
+		<div class="flex flex-col gap-8">
+			<div>
+				<h2
+					class="text-gray-900 dark:text-gray-100 font-semibold text-xl mb-2"
+				>
+					<span class="waving-hand">👋</span> I'm David
+				</h2>
+				<p class="leading-relaxed text-gray-700 dark:text-gray-300">
+					I write software. I work across the stack but lean towards
+					lower-level stuff: Rust, C, graphics, tooling. I care about
+					correctness and performance.
+				</p>
+			</div>
 
-                <p class="leading-relaxed">
-                    Glad you found this part of the site. This is more in detail
-                    about who I am than I'd bother going into for a CV.
-                </p>
+			<div>
+				<h2
+					class="text-gray-900 dark:text-gray-100 font-semibold text-xl mb-2"
+				>
+					What I Do
+				</h2>
+				<p class="leading-relaxed text-gray-700 dark:text-gray-300">
+					Personal projects and contract work. You can see what I've
+					built on the <a
+						href="/projects"
+						class="text-gray-800 dark:text-gray-200 underline underline-offset-2 hover:text-black dark:hover:text-white transition-colors"
+						>projects page</a
+					>. Available for hire.
+				</p>
+			</div>
 
-                <p class="leading-relaxed"></p>
+			<div>
+				<h2
+					class="text-gray-900 dark:text-gray-100 font-semibold text-xl mb-2"
+				>
+					Reaching Out
+				</h2>
+				<p class="leading-relaxed text-gray-700 dark:text-gray-300">
+					Email is best: <a
+						href={`mailto:${email}`}
+						class="text-gray-800 dark:text-gray-200 underline underline-offset-2 hover:text-black dark:hover:text-white transition-colors"
+						>{email}</a
+					>. Also on <a
+						href={x}
+						class="text-gray-800 dark:text-gray-200 underline underline-offset-2 hover:text-black dark:hover:text-white transition-colors"
+						>𝕏</a
+					>, <a
+						href={linkedin}
+						class="text-gray-800 dark:text-gray-200 underline underline-offset-2 hover:text-black dark:hover:text-white transition-colors"
+						>LinkedIn</a
+					>, and <a
+						href={github}
+						class="text-gray-800 dark:text-gray-200 underline underline-offset-2 hover:text-black dark:hover:text-white transition-colors"
+						>GitHub</a
+					>.
+				</p>
+			</div>
 
-                <h2 class="text-green-600 font-bold text-2xl mt-8">
-                    What I Do
-                </h2>
+			<hr class="border-black/10 dark:border-white/10" />
 
-                <p class="leading-relaxed">
-                    I build software, for myself or for people if you want to
-                    contract me. You can find some of my projects <a
-                        href="/projects"
-                        class="underline text-blue-400">here.</a
-                    >
-                </p>
-
-                <h2 class="text-green-600 font-bold text-2xl mt-8">
-                    Reaching Out
-                </h2>
-
-                <p class="leading-relaxed">
-                    You can reach out to me most preferably via my email, <a
-                        href={`mailto:${email}`}
-                        class="underline text-blue-400 inline"
-                        >david@codebycruz.com</a
-                    >. Additionally, I do have an account on <a
-                        href={x}
-                        class="underline text-blue-400 inline">𝕏</a
-                    > and you can technically reach out via <a
-                        href={linkedin}
-                        class="underline text-blue-400 inline">LinkedIn.</a
-                    >
-                </p>
-            </div>
-
-            <div class="flex justify-center md:justify-end">
-                <a
-                    href={linkedin}
-                    class="relative block transition duration-300 hover:scale-105"
-                    aria-label="LinkedIn Profile"
-                >
-                    <img
-                        src="/portrait-1.avif"
-                        alt="Portrait"
-                        class="w-80 h-80 object-cover bg-white object-bottom rounded-lg shadow-lg"
-                    />
-                    <div
-                        class="absolute bottom-4 right-4 bg-blue-600 rounded-full p-3 shadow-lg hover:bg-blue-700 transition duration-300"
-                    >
-                        <Icon name="mdi:linkedin" size="24" class="size-6" />
-                    </div>
-                </a>
-            </div>
-        </div>
-
-        <div class="flex flex-col md:flex-row gap-8 mt-12">
-            <div class="flex-1">
-                <h2 class="text-green-600 font-bold text-2xl">
-                    What Is Your Icon?
-                </h2>
-
-                <p class="leading-relaxed mt-2">
-                    I use a moon for my social media profiles since I'm fond of
-                    the <a
-                        href="https://www.lua.org"
-                        class="underline text-blue-400 inline">Lua</a
-                    > programming language. <i
-                        >It's also really easy to make an icon of.</i
-                    >
-                </p>
-            </div>
-
-            <div class="flex-1">
-                <h2 class="text-green-600 font-bold text-2xl">
-                    What Does Oncelock Mean?
-                </h2>
-
-                <p class="leading-relaxed mt-2">
-                    A Oncelock is a synchronization primitive from the <a
-                        href="https://doc.rust-lang.org/std/sync/struct.OnceLock.html"
-                        class="underline text-blue-400 inline">Rust</a
-                    > programming language. It is very useful for creating a singleton
-                    :)
-                </p>
-            </div>
-        </div>
-
-        <div class="mb-16"></div>
-    </div>
+			<div class="grid sm:grid-cols-2 gap-6">
+				<div>
+					<h2
+						class="text-gray-900 dark:text-gray-100 font-semibold text-xl mb-2"
+					>
+						What's the icon?
+					</h2>
+					<p
+						class="leading-relaxed text-gray-700 dark:text-gray-300 text-sm"
+					>
+						A moon. I like <a
+							href="https://www.lua.org"
+							class="text-gray-800 dark:text-gray-200 underline underline-offset-2 hover:text-black dark:hover:text-white transition-colors"
+							>Lua</a
+						> and it makes for a simple icon.
+					</p>
+				</div>
+				<div>
+					<h2
+						class="text-gray-900 dark:text-gray-100 font-semibold text-xl mb-2"
+					>
+						What's "Oncelock"?
+					</h2>
+					<p
+						class="leading-relaxed text-gray-700 dark:text-gray-300 text-sm"
+					>
+						A <a
+							href="https://doc.rust-lang.org/std/sync/struct.OnceLock.html"
+							class="text-gray-800 dark:text-gray-200 underline underline-offset-2 hover:text-black dark:hover:text-white transition-colors"
+							>synchronization primitive</a
+						> from Rust.
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
 </Layout>
 
 <style>
-    @keyframes wave {
-        0% {
-            transform: rotate(0deg);
-        }
-        10% {
-            transform: rotate(14deg);
-        }
-        20% {
-            transform: rotate(-8deg);
-        }
-        30% {
-            transform: rotate(14deg);
-        }
-        40% {
-            transform: rotate(-4deg);
-        }
-        50% {
-            transform: rotate(10deg);
-        }
-        60% {
-            transform: rotate(0deg);
-        }
-        100% {
-            transform: rotate(0deg);
-        }
-    }
-
-    .waving-hand {
-        animation: wave 2s ease-in-out;
-        transform-origin: 70% 70%;
-        display: inline-block;
-    }
+	@keyframes wave {
+		0%,
+		60%,
+		100% {
+			transform: rotate(0deg);
+		}
+		10%,
+		30% {
+			transform: rotate(14deg);
+		}
+		20% {
+			transform: rotate(-8deg);
+		}
+		40% {
+			transform: rotate(-4deg);
+		}
+		50% {
+			transform: rotate(10deg);
+		}
+	}
+	.waving-hand {
+		animation: wave 2s ease-in-out;
+		transform-origin: 70% 70%;
+		display: inline-block;
+	}
 </style>

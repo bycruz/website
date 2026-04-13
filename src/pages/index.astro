@@ -2,144 +2,248 @@
 import { Icon } from "astro-icon/components";
 import Layout from "../layouts/Layout.astro";
 import Tag from "../components/Tag.astro";
-import { linkedin, x, github } from "../data/info";
+import { linkedin, x, github, email } from "../data/info";
 import { getAllPosts } from "../data/posts";
+import { getAllProjects } from "../data/projects";
 
 const posts = await getAllPosts();
 posts.sort(
 	(a, b) => new Date(b.published).getTime() - new Date(a.published).getTime(),
 );
+const recentPosts = posts.slice(0, 3);
+
+const projects = await getAllProjects();
+projects.sort((a, b) => {
+	const aOngoing = a.status === "Ongoing" ? 1 : 0;
+	const bOngoing = b.status === "Ongoing" ? 1 : 0;
+
+	if (aOngoing !== bOngoing) {
+		return bOngoing - aOngoing;
+	}
+
+	const aStars = a.stars ?? 0;
+	const bStars = b.stars ?? 0;
+
+	if (aStars !== bStars) {
+		return bStars - aStars;
+	}
+
+	return a.order - b.order;
+});
+const featuredProjects = projects.slice(0, 3);
 ---
 
 <Layout>
-	<section class="flex flex-row justify-center">
-		<div
-			class="flex flex-col lg:flex-row gap-4 lg:gap-8 w-full lg:w-2/3 px-4 lg:px-0"
-		>
-			<div class="w-full h-full pt-8 lg:py-52">
-				<div class="flex flex-col items-center justify-center">
-					<h1 class="text-green-600 font-bold text-4xl lg:text-7xl">
-						Hello!
-					</h1>
-					<h2 class="text-2xl lg:text-4xl text-center">
-						Welcome to my website.
-					</h2>
-
-					<!-- Social Links Row -->
-					<div class="flex items-center gap-1 mt-8">
-						<a
-							href={x}
-							target="_blank"
-							rel="noopener noreferrer"
-							class="text-2xl hover:text-green-600 p-4 transition-colors"
-							aria-label="𝕏"
-						>
-							𝕏
-						</a>
-						<a
-							href={linkedin}
-							target="_blank"
-							rel="noopener noreferrer"
-							class="text-2xl hover:text-green-600 p-4 transition-colors"
-							aria-label="LinkedIn"
-						>
-							<Icon name="mdi:linkedin" size="24" />
-						</a>
-						<a
-							href={github}
-							target="_blank"
-							rel="noopener noreferrer"
-							class="text-2xl hover:text-green-600 p-4 transition-colors"
-							aria-label="GitHub"
-						>
-							<Icon name="mdi:github" size="24" />
-						</a>
-						<a
-							href="mailto:david@codebycruz.com"
-							class="text-2xl hover:text-green-600 p-4 transition-colors"
-							aria-label="Email"
-						>
-							<Icon name="mdi:email" size="24" />
-						</a>
-					</div>
-				</div>
-			</div>
-
-			<div class="w-full px-4 py-4 lg:py-12">
-				<div
-					class="border-y border-y-black/50 dark:border-y-white/50 h-[480px] overflow-y-scroll flex flex-col gap-4 pt-4 pb-4 post-list"
+	<!-- Hero -->
+	<section class="py-20 lg:py-28">
+		<div class="flex flex-col lg:flex-row lg:items-center gap-12">
+			<div class="flex-1">
+				<p
+					class="text-gray-600 dark:text-gray-400 font-medium text-sm uppercase tracking-wide mb-3"
 				>
-					{
-						posts.map((entry, index) => (
-							<a
-								href={entry.link}
-								class="p-2 border border-black/50 dark:border-white/50 rounded-lg"
-							>
-								<div class="flex flex-col mb-1">
-									<h2 class="font-semibold text-lg">
-										{entry.title}
-									</h2>
-									<div class="flex items-center gap-4 mt-1 text-sm w-full min-w-0">
-										<div class="flex items-center gap-4 text-gray-500 dark:text-gray-400 flex-shrink-0">
-											<span class="whitespace-nowrap">
-												{new Date(
-													entry.published,
-												).toLocaleDateString("en-US", {
-													year: "numeric",
-													month: "short",
-													day: "numeric",
-												})}
-											</span>
-											<span class="flex items-center gap-1 whitespace-nowrap">
-												<Icon
-													class="inline size-3"
-													name="mdi:clock-outline"
-												/>
-												{entry.minutesToRead} min
-											</span>
-										</div>
-										{entry.tags && (
-											<div class="flex gap-1 overflow-hidden min-w-0 flex-shrink">
-												{entry.tags
-													.slice(0, 3)
-													.map((tag) => (
-														<div class="small-tag flex-shrink-0">
-															<Tag text={tag} />
-														</div>
-													))}
-											</div>
-										)}
-									</div>
-								</div>
-								<p class="mt-1">{entry.desc}</p>
-							</a>
-						))
-					}
+					Software Engineer
+				</p>
+				<h1
+					class="text-4xl lg:text-5xl font-semibold leading-tight mb-4"
+				>
+					Hi, I'm <span class="text-gray-900 dark:text-gray-100"
+						>David Cruz</span
+					>
+				</h1>
+				<p
+					class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-xl mb-8"
+				>
+					I write foundational software and create ecosystems from the
+					ground up.
+				</p>
+				<div class="flex flex-wrap gap-3 mb-8">
+					<a
+						href="/projects"
+						class="bg-gray-900 hover:bg-black dark:bg-gray-100 dark:hover:bg-white text-white dark:text-black px-5 py-2.5 rounded-lg font-semibold transition-colors duration-200"
+					>
+						View Projects
+					</a>
+					<a
+						href={`mailto:${email}`}
+						class="border border-black/20 dark:border-white/20 hover:border-black/40 dark:hover:border-white/40 px-5 py-2.5 rounded-lg font-semibold transition-colors duration-200"
+					>
+						Get in Touch
+					</a>
+				</div>
+				<div class="flex items-center gap-1">
+					<a
+						href={x}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="hover:text-black dark:hover:text-white p-2 transition-colors text-gray-600 dark:text-gray-400"
+						aria-label="𝕏"
+					>
+						<span class="text-xl font-bold">𝕏</span>
+					</a>
+					<a
+						href={linkedin}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="hover:text-black dark:hover:text-white p-2 transition-colors text-gray-600 dark:text-gray-400"
+						aria-label="LinkedIn"
+					>
+						<Icon name="mdi:linkedin" size="22" />
+					</a>
+					<a
+						href={github}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="hover:text-black dark:hover:text-white p-2 transition-colors text-gray-600 dark:text-gray-400"
+						aria-label="GitHub"
+					>
+						<Icon name="mdi:github" size="22" />
+					</a>
+					<a
+						href={`mailto:${email}`}
+						class="hover:text-black dark:hover:text-white p-2 transition-colors text-gray-600 dark:text-gray-400"
+						aria-label="Email"
+					>
+						<Icon name="mdi:email" size="22" />
+					</a>
 				</div>
 			</div>
 		</div>
 	</section>
+
+	<hr class="border-indigo-500/10" />
+
+	<!-- Featured Projects -->
+	<section class="py-16">
+		<div class="flex items-center justify-between mb-8">
+			<h2 class="text-2xl font-bold">Featured Projects</h2>
+			<a
+				href="/projects"
+				class="text-indigo-500 hover:text-indigo-400 text-sm font-semibold flex items-center gap-1 transition-colors"
+			>
+				All projects <Icon name="mdi:arrow-right" size="16" />
+			</a>
+		</div>
+		<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+			{
+				featuredProjects.map((project) => (
+					<a
+						href={project.link}
+						class="group border border-indigo-500/15 hover:border-indigo-500/40 rounded-xl p-5 flex flex-col gap-3 transition-all duration-200 hover:bg-indigo-500/5"
+					>
+						{project.cover && (
+							<img
+								src={project.cover}
+								alt={project.name}
+								class={`${project.coverStyle ?? ""} h-36 w-full object-contain rounded-lg`}
+							/>
+						)}
+						<div class="flex items-start justify-between gap-2">
+							<h3 class="font-bold text-lg group-hover:text-indigo-500 transition-colors">
+								{project.name}
+							</h3>
+							<div class="flex items-center gap-2 flex-shrink-0">
+								{project.stars && (
+									<span class="flex items-center gap-1 text-yellow-400 text-sm">
+										<Icon name="mdi:star" size="14" />
+										{project.stars}
+									</span>
+								)}
+								{project.status && (
+									<span
+										class={`px-2 py-0.5 text-xs font-medium rounded-full ${
+											project.status === "Ongoing"
+												? "bg-indigo-500/20 text-indigo-400 border border-indigo-500/30"
+												: project.status === "Complete"
+													? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/30"
+													: "bg-yellow-500/20 text-yellow-400 border border-yellow-500/30"
+										}`}
+									>
+										{project.status}
+									</span>
+								)}
+							</div>
+						</div>
+						<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+							{project.desc}
+						</p>
+						{project.tags && project.tags.length > 0 && (
+							<div class="flex flex-wrap gap-1.5 mt-auto pt-1">
+								{project.tags.slice(0, 4).map((tag) => (
+									<div class="small-tag">
+										<Tag text={tag} />
+									</div>
+								))}
+							</div>
+						)}
+					</a>
+				))
+			}
+		</div>
+	</section>
+
+	<hr class="border-indigo-500/10" />
+
+	<!-- Recent Posts -->
+	<section class="py-16">
+		<div class="flex items-center justify-between mb-8">
+			<h2 class="text-2xl font-bold">Recent Posts</h2>
+			<a
+				href="/posts"
+				class="text-indigo-500 hover:text-indigo-400 text-sm font-semibold flex items-center gap-1 transition-colors"
+			>
+				All posts <Icon name="mdi:arrow-right" size="16" />
+			</a>
+		</div>
+		<div class="flex flex-col gap-3">
+			{
+				recentPosts.map((entry) => (
+					<a
+						href={entry.link}
+						class="group flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6 border border-indigo-500/15 hover:border-indigo-500/40 rounded-xl p-4 transition-all duration-200 hover:bg-indigo-500/5"
+					>
+						<div class="flex-1 min-w-0">
+							<h3 class="font-semibold group-hover:text-indigo-500 transition-colors truncate">
+								{entry.title}
+							</h3>
+							<p class="text-sm text-gray-600 dark:text-gray-400 mt-0.5 line-clamp-1">
+								{entry.desc}
+							</p>
+						</div>
+						<div class="flex items-center gap-3 text-xs text-gray-500 dark:text-gray-500 flex-shrink-0">
+							<span>
+								{new Date(entry.published).toLocaleDateString(
+									"en-US",
+									{
+										year: "numeric",
+										month: "short",
+										day: "numeric",
+									},
+								)}
+							</span>
+							<span class="flex items-center gap-1">
+								<Icon
+									class="inline size-3"
+									name="mdi:clock-outline"
+								/>
+								{entry.minutesToRead} min
+							</span>
+						</div>
+					</a>
+				))
+			}
+		</div>
+	</section>
+
+	<div class="pb-8"></div>
 </Layout>
 
 <style>
-	.post-list {
-		mask-image: linear-gradient(
-			to bottom,
-			transparent 0%,
-			black 15%,
-			black 85%,
-			transparent 100%
-		);
-		scrollbar-width: none;
-	}
-
 	.small-tag :global(span) {
-		padding: 0.25rem 0.5rem;
-		font-size: 0.75rem;
+		padding: 0.2rem 0.4rem;
+		font-size: 0.7rem;
 	}
-
 	.small-tag :global(.icon) {
-		width: 12px;
-		height: 12px;
+		width: 11px;
+		height: 11px;
 	}
 </style>

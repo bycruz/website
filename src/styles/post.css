@@ -2,216 +2,220 @@
 .post h2,
 .post h3,
 .post h4 {
-    font-weight: 600;
+	font-weight: 600;
 }
 
 .post h1 {
-    font-size: 2.5rem;
-    color: #ffffff;
-    margin-bottom: 1.5rem;
-    margin-top: 2rem;
+	font-size: 2.5rem;
+	color: #111827;
+	margin-bottom: 1.5rem;
+	margin-top: 2rem;
 }
 
 .post h1:first-child {
-    margin-top: 0;
+	margin-top: 0;
 }
 
 .post h2 {
-    font-size: 2rem;
-    color: #22c55e;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    border-bottom: 2px solid rgba(34, 197, 94, 0.2);
-    padding-bottom: 0.5rem;
+	font-size: 2rem;
+	color: #1f2937;
+	margin-top: 2rem;
+	margin-bottom: 1rem;
+	border-bottom: 1px solid rgba(107, 114, 128, 0.25);
+	padding-bottom: 0.5rem;
 }
 
 .post h3 {
-    font-size: 1.5rem;
-    color: #22c55e;
-    margin-top: 1.5rem;
-    margin-bottom: 0.75rem;
+	font-size: 1.5rem;
+	color: #374151;
+	margin-top: 1.5rem;
+	margin-bottom: 0.75rem;
 }
 
 .post h4 {
-    font-size: 1.25rem;
-    color: #ffffff;
-    margin-top: 1rem;
-    margin-bottom: 0.5rem;
+	font-size: 1.25rem;
+	color: #4b5563;
+	margin-top: 1rem;
+	margin-bottom: 0.5rem;
 }
 
 .post ul,
 .post ol {
-    margin: 1.5rem 0;
-    padding-left: 2rem;
+	margin: 1.5rem 0;
+	padding-left: 2rem;
 }
 
 .post ul {
-    list-style-type: none;
+	list-style-type: none;
 }
 
 .post ul li::before {
-    content: "▸";
-    color: #22c55e;
-    font-weight: bold;
-    position: absolute;
-    margin-left: -1.5rem;
+	content: "▸";
+	color: #818cf8;
+	font-weight: bold;
+	position: absolute;
+	margin-left: -1.5rem;
 }
 
 .post ol {
-    list-style-type: decimal;
-    list-style-position: outside;
+	list-style-type: decimal;
+	list-style-position: outside;
 }
 
 .post li {
-    margin: 0.5rem 0;
-    position: relative;
-    line-height: 1.6;
+	margin: 0.5rem 0;
+	position: relative;
+	line-height: 1.6;
 }
 
 .post p {
-    margin: 1.5rem 0;
-    line-height: 1.7;
-    color: black;
+	margin: 1.5rem 0;
+	line-height: 1.7;
+	color: black;
 }
 
 @media (prefers-color-scheme: dark) {
-    .post p {
-        color: #ffffff;
-    }
+	.post p {
+		color: #ffffff;
+	}
 }
 
-/* First paragraph after headings should have less top margin */
 .post h1 + p,
 .post h2 + p,
 .post h3 + p,
 .post h4 + p {
-    margin-top: 0.75rem;
+	margin-top: 0.75rem;
 }
 
-/* Links */
 .post a {
-    color: #60a5fa;
-    text-decoration: underline;
-    text-underline-offset: 2px;
-    transition: all 0.2s ease;
+	color: #374151;
+	text-decoration: underline;
+	text-underline-offset: 2px;
+	transition: color 0.2s ease;
 }
 
 .post a:hover {
-    color: #22c55e;
-    text-decoration-color: #22c55e;
+	color: #111827;
+	text-decoration-color: #6b7280;
 }
 
 .post em {
-    font-style: italic;
-    color: #d1d5db;
+	font-style: italic;
+	color: #4b5563;
 }
 
 .post strong {
-    font-weight: 600;
-    color: #ffffff;
+	font-weight: 600;
+	color: #111827;
 }
 
 /* Inline code */
 .post code {
-    background-color: rgba(255, 255, 255, 0.1);
-    padding: 0.125rem 0.375rem;
-    border-radius: 0.375rem;
-    font-family:
-        ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono",
-        Menlo, monospace;
-    font-size: 0.875em;
-    color: #22c55e;
-    border: 1px solid rgba(34, 197, 94, 0.2);
+	background-color: rgba(107, 114, 128, 0.12);
+	padding: 0.125rem 0.375rem;
+	border-radius: 0.375rem;
+	font-family:
+		ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono",
+		Menlo, monospace;
+	font-size: 0.875em;
+	color: #1f2937;
+	border: 1px solid rgba(107, 114, 128, 0.22);
 }
 
 /* Code blocks */
 .post pre {
-    padding: 1.5rem;
-    border-radius: 0.5rem;
-    margin: 2rem 0;
-    overflow-x: auto;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+	padding: 1.5rem;
+	border-radius: 0.5rem;
+	margin: 2rem 0;
+	overflow-x: auto;
+	border: 1px solid rgba(107, 114, 128, 0.2);
 }
 
 .post pre code {
-    background-color: transparent;
-    padding: 0;
-    border-radius: 0;
-    color: #ffffff;
-    border: none;
-    font-size: 0.9em;
+	background-color: transparent;
+	padding: 0;
+	border-radius: 0;
+	color: inherit;
+	border: none;
+	font-size: 0.9em;
 }
 
 .post blockquote {
-    border-left: 4px solid #22c55e;
-    padding-left: 1.5rem;
-    margin: 2rem 0;
-    font-style: italic;
-    color: #d1d5db;
-    background-color: rgba(34, 197, 94, 0.05);
-    padding: 1rem 1.5rem;
-    border-radius: 0 0.5rem 0.5rem 0;
+	border-left: 3px solid #9ca3af;
+	padding-left: 1.5rem;
+	margin: 2rem 0;
+	font-style: italic;
+	color: #4b5563;
+	background-color: rgba(107, 114, 128, 0.08);
+	padding: 1rem 1.5rem;
+	border-radius: 0 0.5rem 0.5rem 0;
 }
 
 .post blockquote p {
-    margin: 0.5rem 0;
+	margin: 0.5rem 0;
 }
 
 .post blockquote p:first-child {
-    margin-top: 0;
+	margin-top: 0;
 }
 
 .post blockquote p:last-child {
-    margin-bottom: 0;
+	margin-bottom: 0;
 }
 
-/* Images */
 .post img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 0.5rem;
-    margin: 2rem auto;
-    display: block;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+	max-width: 100%;
+	height: auto;
+	border-radius: 0.5rem;
+	margin: 2rem auto;
+	display: block;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-/* Tables */
 .post table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 2rem 0;
-    background-color: rgba(255, 255, 255, 0.05);
-    border-radius: 0.5rem;
-    overflow: hidden;
+	width: 100%;
+	border-collapse: collapse;
+	margin: 2rem 0;
+	background-color: rgba(99, 102, 241, 0.05);
+	border-radius: 0.5rem;
+	overflow: hidden;
 }
 
 .post th,
 .post td {
-    padding: 0.75rem 1rem;
-    text-align: left;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	padding: 0.75rem 1rem;
+	text-align: left;
+	border-bottom: 1px solid rgba(129, 140, 248, 0.15);
 }
 
 .post th {
-    background-color: rgba(34, 197, 94, 0.1);
-    color: #22c55e;
-    font-weight: 600;
+	background-color: rgba(107, 114, 128, 0.12);
+	color: #1f2937;
+	font-weight: 600;
 }
 
 .post tr:last-child td {
-    border-bottom: none;
+	border-bottom: none;
 }
 
-/* Horizontal rule */
 .post hr {
-    border: none;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #22c55e, transparent);
-    margin: 3rem 0;
+	border: none;
+	height: 1px;
+	background: rgba(107, 114, 128, 0.3);
+	margin: 3rem 0;
 }
 
-/* Add some breathing room to the overall post content */
 .post {
-    max-width: none;
-    line-height: 1.6;
+	max-width: none;
+	line-height: 1.6;
+}
+
+.post iframe {
+	display: block;
+	width: 100%;
+	max-width: 100%;
+	aspect-ratio: 16 / 9;
+	height: auto;
+	margin: 2rem auto;
+	border: 0;
 }

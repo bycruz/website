@@ -12,40 +12,45 @@ posts.sort(
 ---
 
 <Layout>
-	<div class="flex flex-col items-center gap-8 mt-4 px-4 lg:px-20 pb-20">
-		{
-			posts.map((post) => (
-				<a
-					href={post.link}
-					class="flex flex-col max-w-xl md:max-w-3xl lg:max-w-5xl w-full transition-colors duration-300 hover:bg-black/20 rounded-lg p-4 bg-black/5"
-				>
-					<div class="overflow-hidden rounded-lg bg-black">
-						{post.preview ? (
-							<img
-								src={post.preview}
-								alt="Post preview"
-								loading="lazy"
-								class="h-48 lg:h-64 w-full object-contain drop-shadow-lg"
-							/>
-						) : (
-							<div class="h-48 lg:h-64 w-full bg-white dark:bg-black drop-shadow-lg relative">
-								<PatternBackground />
-							</div>
-						)}
-					</div>
+	<div class="py-12 pb-20 max-w-4xl mx-auto px-4">
+		<h1 class="text-3xl font-bold mb-2">Posts</h1>
+		<p class="text-gray-600 dark:text-gray-400 mb-8">
+			Writing on software and other things.
+		</p>
 
-					<div class="p-4 md:p-6">
-						<h2
-							class="font-bold text-2xl mb-2"
-							transition:name={`post-title-${post.filename}`}
-						>
-							{post.title}
-						</h2>
-						<div
-							class="flex flex-wrap items-center gap-4 mb-3 text-sm"
-							transition:name={`post-meta-${post.filename}`}
-						>
-							<div class="flex flex-wrap items-center gap-4 text-gray-500">
+		<div class="flex flex-col gap-3">
+			{
+				posts.map((post) => (
+					<a
+						href={post.link}
+						class="group border border-black/10 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 rounded-lg overflow-hidden flex flex-col sm:flex-row transition-colors duration-150 bg-white/40 dark:bg-white/[0.02]"
+					>
+						<div class="sm:w-44 lg:w-52 flex-shrink-0 bg-black/[0.03] dark:bg-white/[0.03] flex items-center justify-center overflow-hidden">
+							{post.preview ? (
+								<img
+									src={post.preview}
+									alt="Post preview"
+									loading="lazy"
+									class="h-32 sm:h-full w-full object-contain"
+								/>
+							) : (
+								<div class="h-32 sm:h-full w-full relative">
+									<PatternBackground />
+								</div>
+							)}
+						</div>
+
+						<div class="p-4 flex flex-col justify-center gap-1.5">
+							<h2
+								class="font-semibold text-lg group-hover:text-black/80 dark:group-hover:text-white/90 transition-colors"
+								transition:name={`post-title-${post.filename}`}
+							>
+								{post.title}
+							</h2>
+							<div
+								class="flex items-center gap-3 text-sm text-gray-500 dark:text-gray-400 overflow-hidden whitespace-nowrap"
+								transition:name={`post-meta-${post.filename}`}
+							>
 								<span>
 									{new Date(
 										post.published,
@@ -57,24 +62,21 @@ posts.sort(
 								</span>
 								<span class="flex items-center gap-1">
 									<Icon
-										class="inline size-4"
+										class="inline size-3"
 										name="mdi:clock-outline"
 									/>
 									{post.minutesToRead} min
 								</span>
+								{post.tags &&
+									post.tags.map((tag) => <Tag text={tag} />)}
 							</div>
-							{post.tags && (
-								<div class="flex flex-wrap gap-2">
-									{post.tags.map((tag) => (
-										<Tag text={tag} />
-									))}
-								</div>
-							)}
+							<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+								{post.desc}
+							</p>
 						</div>
-						<p class="text-lg">{post.desc}</p>
-					</div>
-				</a>
-			))
-		}
+					</a>
+				))
+			}
+		</div>
 	</div>
 </Layout>

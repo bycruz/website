@@ -11,28 +11,28 @@ import cloudflare from "@astrojs/cloudflare";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://codebycruz.com",
+	site: "https://bycruz.dev",
 
-  markdown: {
-      shikiConfig: {
-          theme: "dark-plus",
-      },
+	markdown: {
+		shikiConfig: {
+			theme: "dark-plus",
+		},
 	},
 
-  vite: {
-      plugins: [tailwindcss()],
+	vite: {
+		plugins: [tailwindcss()],
 	},
 
-  integrations: [
-      icon({
-          include: {
-              mdi: ["*"],
-              ion: ["*"],
-              "simple-icons": ["*"],
-          },
-      }),
-      sitemap(),
+	integrations: [
+		icon({
+			include: {
+				mdi: ["*"],
+				ion: ["*"],
+				"simple-icons": ["*"],
+			},
+		}),
+		sitemap(),
 	],
 
-  adapter: cloudflare(),
+	adapter: cloudflare(),
 });

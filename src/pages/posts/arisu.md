@@ -24,7 +24,7 @@ I mention all of those GUI toolkits because I made the decision to implement thi
 
 ## Show, don't tell
 
-[![v4](/posts/arisu/v0.4.0.avif)](https://github.com/codebycruz/arisu)
+[![v4](/posts/arisu/v0.4.0.avif)](https://github.com/bycruz/arisu)
 
 > This is a screenshot of Arisu 0.4.0, running on Windows 11. Pretty much every feature you see there that isn't grayed out is implemented and usable.
 
@@ -33,7 +33,7 @@ I mention all of those GUI toolkits because I made the decision to implement thi
 - Selection box
 - Basic shape tools (rectangle, ellipse, line)
 
-[![v1](/posts/arisu/v0.1.0.avif)](https://github.com/codebycruz/arisu)
+[![v1](/posts/arisu/v0.1.0.avif)](https://github.com/bycruz/arisu)
 
 > If you're curious, here's a screenshot of 0.1.0 on Linux, although it's not too different.
 
@@ -47,7 +47,7 @@ For now, you can use these instructions. _It's really easy, I promise!_
     - Windows: `winget install -e --id DEVCOM.LuaJIT`
     - Linux: `dnf install luajit` or `apt install luajit`
 2. Clone the repository
-    - `git clone https://github.com/codebycruz/arisu`
+    - `git clone https://github.com/bycruz/arisu`
 3. Run this inside the repo folder
     - `luajit ./src/main.lua`
 
@@ -232,8 +232,8 @@ MacOS support is the last operating system that isn't supported. I don't have a 
 
 [^harfbuzz]: HarfBuzz Text Shaping Engine (https://harfbuzz.github.io/)
 
-[^qun]: Qun, a heavily modular, ECS based game engine in C++ I also made for professor Fahim Khan last quarter for CSC 471: https://github.com/codebycruz/qun
+[^qun]: Qun, a heavily modular, ECS based game engine in C++ I also made for professor Fahim Khan last quarter for CSC 471: https://github.com/bycruz/qun
 
-[^qun-rs]: Qun-rs, a second iteration of Qun, except in Rust and even more modular: https://github.com/codebycruz/qun-rs
+[^qun-rs]: Qun-rs, a second iteration of Qun, except in Rust and even more modular: https://github.com/bycruz/qun-rs
 
 [^alsa]: ALSA Sound System (https://www.alsa-project.org/)
